@@ -46,14 +46,7 @@ public class DayAdapter extends RecyclerView.Adapter<DayAdapter.DayViewHolder> {
         //if you need three fix imageview in width
         int devicewidth = (int)(displaymetrics.widthPixels / 1.5);
 
-//        //if you need 4-5-6 anything fix imageview in height
-//        int deviceheight = displaymetrics.heightPixels / 4;
-
         view.getLayoutParams().width = devicewidth;
-
-//        //if you need same height as width you can set devicewidth in holder.image_view.getLayoutParams().height
-//        holder.image_view.getLayoutParams().height = deviceheight;
-
         return new DayViewHolder(view);
     }
 

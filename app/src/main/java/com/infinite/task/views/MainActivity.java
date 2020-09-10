@@ -13,6 +13,7 @@ import android.support.v7.widget.SnapHelper;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.XAxis;
@@ -43,7 +44,7 @@ public class MainActivity extends BaseActivity<MainViewModel> {
 
     private DayAdapter dayAdapter;
     LinearLayoutManager horizontalLayout;
-    int review_position;
+    int review_position, last_position = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,17 +55,13 @@ public class MainActivity extends BaseActivity<MainViewModel> {
         lineChart = findViewById(R.id.lineChart);
         lineChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
         lineChart.setDescriptionColor(Color.WHITE);
+        lineChart.getLegend().setEnabled(false);
 
 
         dayAdapter = new DayAdapter(this);
         horizontalLayout = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(horizontalLayout);
         recyclerView.setAdapter(dayAdapter);
-//        dayAdapter.setCurrentPosition(0);
-
-        // add pager behavior
-//        PagerSnapHelper snapHelper = new PagerSnapHelper();
-//        snapHelper.attachToRecyclerView(recyclerView);
 
         SnapHelper mSnapHelper = new PagerSnapHelper();
         mSnapHelper.attachToRecyclerView(recyclerView);
@@ -75,17 +72,33 @@ public class MainActivity extends BaseActivity<MainViewModel> {
                 if (newState == RecyclerView.SCROLL_STATE_DRAGGING) {
                     //Dragging
                 } else if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+
                     review_position = horizontalLayout.findFirstVisibleItemPosition();
+
+                    if (review_position > last_position) {
+                        dayAdapter.setCurrentPosition(review_position + 1);
+                        last_position = horizontalLayout.findFirstVisibleItemPosition();
+                    } else if (review_position < last_position) {
+                        dayAdapter.setCurrentPosition(review_position + 1);
+                        last_position = horizontalLayout.findFirstVisibleItemPosition();
+                    } else if (review_position == 0 && last_position == 0) {
+//                        dayAdapter.setCurrentPosition(review_position);
+//                        last_position = review_position = horizontalLayout.findFirstVisibleItemPosition();
+                    }
+
                 }
             }
 
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-//                int firstVisibleItem = horizontalLayout.findFirstVisibleItemPosition();
-//                 Log.e ("VisibleItem", String.valueOf(firstVisibleItem));
-//                 dayAdapter.setCurrentPosition((int)(firstVisibleItem*1.6));
-
+                int position = horizontalLayout.findFirstVisibleItemPosition();
+                Log.e("VisibleItem", String.valueOf(position));
+                if (review_position == 0 && dx > 0) {
+                    dayAdapter.setCurrentPosition(review_position + 1);
+                } else {
+                    dayAdapter.setCurrentPosition(review_position);
+                }
             }
         });
     }
