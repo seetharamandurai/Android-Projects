@@ -1,0 +1,120 @@
+{
+  "graphdata": [
+    {
+      "days": [
+        {
+          "day": "Sun",
+          "value": "10",
+          "description": "It is Sunday"
+        },
+        {
+          "day": "Mon",
+          "value": "12",
+          "description": "It is Monday"
+        },
+        {
+          "day": "Tue",
+          "value": "14",
+          "description": "It is Tuesday"
+        },
+        {
+          "day": "Wed",
+          "value": "16",
+          "description": "It is Wednesday"
+        },
+        {
+          "day": "Thu",
+          "value": "14",
+          "description": "It is Thursday"
+        },
+        {
+          "day": "Fri",
+          "value": "12",
+          "description": "It is Friday"
+        },
+        {
+          "day": "Sat",
+          "value": "10",
+          "description": "It is Saturday"
+        }
+      ]
+    },
+    {
+      "days": [
+        {
+          "day": "Sun",
+          "value": "8",
+          "description": "It is Sunday"
+        },
+        {
+          "day": "Mon",
+          "value": "10",
+          "description": "It is Monday"
+        },
+        {
+          "day": "Tue",
+          "value": "12",
+          "description": "It is Tuesday"
+        },
+        {
+          "day": "Wed",
+          "value": "14",
+          "description": "It is Wednesday"
+        },
+        {
+          "day": "Thu",
+          "value": "12",
+          "description": "It is Thursday"
+        },
+        {
+          "day": "Fri",
+          "value": "10",
+          "description": "It is Friday"
+        },
+        {
+          "day": "Sat",
+          "value": "8",
+          "description": "It is Saturday"
+        }
+      ]
+    },
+    {
+      "days": [
+        {
+          "day": "Sun",
+          "value": "6",
+          "description": "It is Sunday"
+        },
+        {
+          "day": "Mon",
+          "value": "8",
+          "description": "It is Monday"
+        },
+        {
+          "day": "Tue",
+          "value": "10",
+          "description": "It is Tuesday"
+        },
+        {
+          "day": "Wed",
+          "value": "12",
+          "description": "It is Wednesday"
+        },
+        {
+          "day": "Thu",
+          "value": "10",
+          "description": "It is Thursday"
+        },
+        {
+          "day": "Fri",
+          "value": "8",
+          "description": "It is Friday"
+        },
+        {
+          "day": "Sat",
+          "value": "6",
+          "description": "It is Saturday"
+        }
+      ]
+    }  ]
+}
