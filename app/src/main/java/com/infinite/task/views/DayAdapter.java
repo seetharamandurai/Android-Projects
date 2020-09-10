@@ -1,9 +1,11 @@
 package com.infinite.task.views;
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,6 +40,20 @@ public class DayAdapter extends RecyclerView.Adapter<DayAdapter.DayViewHolder> {
     @Override
     public DayViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_row_details, parent, false);
+
+        DisplayMetrics displaymetrics = new DisplayMetrics();
+        ((Activity) context).getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+        //if you need three fix imageview in width
+        int devicewidth = (int)(displaymetrics.widthPixels / 1.5);
+
+//        //if you need 4-5-6 anything fix imageview in height
+//        int deviceheight = displaymetrics.heightPixels / 4;
+
+        view.getLayoutParams().width = devicewidth;
+
+//        //if you need same height as width you can set devicewidth in holder.image_view.getLayoutParams().height
+//        holder.image_view.getLayoutParams().height = deviceheight;
+
         return new DayViewHolder(view);
     }
 

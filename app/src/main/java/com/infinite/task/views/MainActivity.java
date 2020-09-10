@@ -82,9 +82,10 @@ public class MainActivity extends BaseActivity<MainViewModel> {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                int firstVisibleItem = horizontalLayout.findFirstVisibleItemPosition();
-                 Log.e ("VisibleItem", String.valueOf(firstVisibleItem));
-                 dayAdapter.setCurrentPosition(firstVisibleItem);
+//                int firstVisibleItem = horizontalLayout.findFirstVisibleItemPosition();
+//                 Log.e ("VisibleItem", String.valueOf(firstVisibleItem));
+//                 dayAdapter.setCurrentPosition((int)(firstVisibleItem*1.6));
+
             }
         });
     }
@@ -115,6 +116,8 @@ public class MainActivity extends BaseActivity<MainViewModel> {
                 sets[i].setValueTextSize(9f);
                 sets[i].setDrawFilled(false);
                 sets[i].setDrawCubic(true);
+                sets[i].setDrawCircles(false);
+                sets[i].setDrawValues(false);
                 dataSets.add(sets[i]);
             }
 

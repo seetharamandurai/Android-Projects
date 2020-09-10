@@ -5,24 +5,71 @@ repositories {
     maven { url "https://jitpack.io" }
 }
 
+String appVersionName = "1.0.0",
+       appPackageName = "com.infinite.task",
+       apkName = "Infinite Machine Tast", buildToolVersion = "29.0.3"
+int appVersionCode = 1
+
 android {
     compileSdkVersion 29
-    buildToolsVersion "29.0.3"
+    buildToolsVersion buildToolVersion
 
     defaultConfig {
-        applicationId "com.infinite.task"
+        applicationId appPackageName
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        versionCode appVersionCode
+        versionName appVersionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+/*
+        release {
+            storeFile file("TrackCorona.jks")
+            storePassword "TrackCorona"
+            keyAlias "TrackCorona"
+            keyPassword "TrackCorona"
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+*/
+        release {
+            storeFile file('INFINITE.jks')
+            keyPassword 'INFINITE'
+            keyAlias 'INFINITE'
+            storePassword 'INFINITE'
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+    }
+
+
     buildTypes {
+        debug {
+            debuggable true
+            minifyEnabled false
+        }
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            debuggable false
+            multiDexEnabled true
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            applicationVariants.all { variant ->
+                variant.outputs.each { output ->
+                    def newName = apkName + "-v" + appVersionName + ".apk"
+                    output.outputFileName = newName
+                }
+            }
+        }
+
+        lintOptions {
+            disable 'MissingTranslation'
+            checkReleaseBuilds false
+            abortOnError false
         }
     }
 
